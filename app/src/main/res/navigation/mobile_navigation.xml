@@ -43,5 +43,20 @@
     <fragment
         android:id="@+id/subjects"
         android:name="com.learning_application.SubjectsFragment"
-        android:label="Subjects" />
+        android:label="Subjects" >
+        <action
+            android:id="@+id/action_subjects_to_chapterFragment"
+            app:destination="@id/chapterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chapterFragment"
+        android:name="com.learning_application.ChapterFragment"
+        tools:layout="@layout/fragment_chapter">
+
+        <argument
+            android:name="subject_name"
+            app:argType="string"
+            android:defaultValue="Chapters" />
+    </fragment>
+
 </navigation>
