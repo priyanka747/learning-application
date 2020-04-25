@@ -1,4 +1,4 @@
-package com.learning_application.controller;
+package com.learning_application;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,8 +6,6 @@ import android.os.Handler;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.learning_application.R;
 
 
 public class Splash extends AppCompatActivity {

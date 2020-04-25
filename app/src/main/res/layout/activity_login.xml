@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".controller.Login">
+    tools:context=".Login">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,6 +70,7 @@
             android:layout_marginRight="35dp"
             />
         <Button
+            android:id="@+id/loginbtn"
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
