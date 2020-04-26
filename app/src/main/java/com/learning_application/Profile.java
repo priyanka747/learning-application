@@ -1,19 +1,20 @@
-package com.learning_application.ui.Profile;
+package com.learning_application;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
-import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.webkit.MimeTypeMap;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -32,43 +33,40 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.learning_application.Login;
-import com.learning_application.R;
 import com.squareup.picasso.Picasso;
 
 
 import javax.annotation.Nullable;
 
-public class Profile extends AppCompatActivity {
+public class Profile extends Fragment {
     private static final int GALLERY_INTENT_CODE = 1023;
     TextView fullName, email, phone, verifyMsg;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userId;
-    Button resendCode;
+    Button resendCode,logout;
     Button resetPassLocal, changeProfileImage;
     FirebaseUser user;
     ImageView profileImage;
     StorageReference storageReference;
+    NavController navController;
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
 
+        View root = inflater.inflate(R.layout.fragment_profile, container, false);
+        phone = root.findViewById(R.id.profilePhone);
+        fullName = root.findViewById(R.id.profileName);
+        email = root.findViewById(R.id.profileEmail);
+        resetPassLocal = root.findViewById(R.id.resetPasswordLocal);
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-        phone = findViewById(R.id.profilePhone);
-        fullName = findViewById(R.id.profileName);
-        email = findViewById(R.id.profileEmail);
-        resetPassLocal = findViewById(R.id.resetPasswordLocal);
-
-        profileImage = findViewById(R.id.profileImage);
-        changeProfileImage = findViewById(R.id.changeProfile);
-
-
+        profileImage = root.findViewById(R.id.profileImage);
+        changeProfileImage = root.findViewById(R.id.changeProfile);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
-
+        resendCode = root.findViewById(R.id.resendCode);
+        verifyMsg = root.findViewById(R.id.verifyMsg);
+        logout=root.findViewById(R.id.btnLogout);
         StorageReference profileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -76,11 +74,6 @@ public class Profile extends AppCompatActivity {
                 Picasso.get().load(uri).into(profileImage);
             }
         });
-
-        resendCode = findViewById(R.id.resendCode);
-        verifyMsg = findViewById(R.id.verifyMsg);
-
-
         userId = fAuth.getCurrentUser().getUid();
         user = fAuth.getCurrentUser();
 
@@ -109,7 +102,7 @@ public class Profile extends AppCompatActivity {
 
 
         DocumentReference documentReference = fStore.collection("users").document(userId);
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+        documentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 if (documentSnapshot.exists()) {
@@ -142,12 +135,12 @@ public class Profile extends AppCompatActivity {
                         user.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(Profile.this, "Password Reset Successfully.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity().getApplicationContext(), "Password Reset Successfully.", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(Profile.this, "Password Reset Failed.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity().getApplicationContext(), "Password Reset Failed.", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -165,6 +158,15 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+
+
+        return root;
+    }
+
+    @Override
+    public void onActivityCreated(@androidx.annotation.Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+//        navController=Navigation.findNavController(this.getActivity(),R.id.nav_host_fragment);
         changeProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -174,26 +176,35 @@ public class Profile extends AppCompatActivity {
 
             }
         });
-
-
+        logout.setOnClickListener(v -> {
+            logout(v);
+        });
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @androidx.annotation.Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1000) {
-            if (resultCode == Activity.RESULT_OK) {
-                Uri imageUri = data.getData();
-
-                //profileImage.setImageURI(imageUri);
-
-                uploadImageToFirebase(imageUri);
-
-
-            }
-        }
+    public void onViewCreated(@NonNull View view, @androidx.annotation.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        navController= Navigation.findNavController(view);
 
     }
+
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @androidx.annotation.Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == 1000) {
+//            if (resultCode == Activity.RESULT_OK) {
+//                Uri imageUri = data.getData();
+//
+//                //profileImage.setImageURI(imageUri);
+//
+//                uploadImageToFirebase(imageUri);
+//
+//
+//            }
+//        }
+//
+//    }
 
     private void uploadImageToFirebase(Uri imageUri) {
         // uplaod image to firebase storage
@@ -211,7 +222,7 @@ public class Profile extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(Profile.this, "Failed.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Failed.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -219,7 +230,7 @@ public class Profile extends AppCompatActivity {
 
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();//logout
-        startActivity(new Intent(getApplicationContext(), Login.class));
-        finish();
+        startActivity(new Intent(getActivity(),Login.class));
+        getActivity().finish();
     }
 }

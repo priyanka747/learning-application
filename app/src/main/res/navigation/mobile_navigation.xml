@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/nav_home">
 
     <fragment
         android:id="@+id/nav_home"
@@ -18,15 +18,9 @@
 
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.learning_application.ui.Profile.GalleryFragment"
-        tools:layout="@layout/fragment_gallery" >
-        <action
-            android:id="@+id/action_nav_profile_to_profile"
-            app:destination="@id/profile" />
-        <action
-            android:id="@+id/action_nav_profile_to_register"
-            app:destination="@id/register" />
-    </fragment>
+        android:name="com.learning_application.Profile"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/nav_saved"
@@ -36,7 +30,8 @@
     <fragment
         android:id="@+id/subjects"
         android:name="com.learning_application.SubjectsFragment"
-        android:label="Subjects" >
+        android:label="Subjects"
+        tools:layout="@layout/fragment_subjects">
         <action
             android:id="@+id/action_subjects_to_chapterFragment"
             app:destination="@id/chapterFragment" />
@@ -50,21 +45,14 @@
             android:name="subject_name"
             app:argType="string"
             android:defaultValue="Chapters" />
+        <action
+            android:id="@+id/action_chapterFragment_to_chapterContentFragment"
+            app:destination="@id/chapterContentFragment" />
     </fragment>
-    <activity
-        android:id="@+id/profile"
-        android:name="com.learning_application.ui.Profile.Profile"
-        android:label="activity_profile"
-        tools:layout="@layout/activity_profile" />
-    <activity
-        android:id="@+id/register"
-        android:name="com.learning_application.Register"
-        android:label="activity_register"
-        tools:layout="@layout/activity_register" />
-    <activity
-        android:id="@+id/login"
-        android:name="com.learning_application.Login"
-        android:label="activity_login"
-        tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/chapterContentFragment"
+        android:name="com.learning_application.ChapterContentFragment"
+        android:label="fragment_chapter_content"
+        tools:layout="@layout/fragment_chapter_content" />
 
 </navigation>
