@@ -15,28 +15,21 @@
             android:id="@+id/action_nav_home_to_subjects"
             app:destination="@id/subjects" />
     </fragment>
-    <fragment
-        android:id="@+id/nav_home_second"
-        android:name="com.learning_application.ui.home.HomeSecondFragment"
-        android:label="@string/home_second"
-        tools:layout="@layout/fragment_home_second">
-        <action
-            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
-            app:destination="@id/nav_home" />
 
-        <argument
-            android:name="myArg"
-            app:argType="string" />
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.learning_application.ui.Profile.GalleryFragment"
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_nav_profile_to_profile"
+            app:destination="@id/profile" />
+        <action
+            android:id="@+id/action_nav_profile_to_register"
+            app:destination="@id/register" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.learning_application.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_saved"
         android:name="com.learning_application.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
@@ -58,5 +51,20 @@
             app:argType="string"
             android:defaultValue="Chapters" />
     </fragment>
+    <activity
+        android:id="@+id/profile"
+        android:name="com.learning_application.ui.Profile.Profile"
+        android:label="activity_profile"
+        tools:layout="@layout/activity_profile" />
+    <activity
+        android:id="@+id/register"
+        android:name="com.learning_application.Register"
+        android:label="activity_register"
+        tools:layout="@layout/activity_register" />
+    <activity
+        android:id="@+id/login"
+        android:name="com.learning_application.Login"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
 
 </navigation>

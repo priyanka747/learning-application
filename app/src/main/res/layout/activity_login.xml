@@ -7,78 +7,94 @@
     tools:context=".Login">
 
     <LinearLayout
+        android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
-        android:orientation="vertical"
         android:layout_gravity="center"
-        >
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
         <ImageView
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src="@drawable/ic_launcher_background"
             android:layout_gravity="center"
-            />
+            android:src="@drawable/ic_launcher_background" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:text="Welcome to learning app"
             android:textColor="#2CA7E0"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
             android:textSize="25dp"
-            />
+            android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/et-Email"
+            android:id="@+id/Email"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:hint="username"
-            android:textColorHint="#2CA7E0"
             android:layout_gravity="center"
-            android:drawableLeft="@drawable/ic_person"
-            android:drawablePadding="10dp"
             android:layout_marginTop="35dp"
-            android:background="@drawable/edit"
+            android:background="@android:color/holo_blue_dark"
+            android:drawableLeft="@drawable/ic_person_black_24dp"
+            android:drawablePadding="10dp"
+            android:hint="Enter your username..."
+            android:inputType="textEmailAddress"
             android:padding="20dp"
-            />
+            android:textColorHint="#E7EAEC" />
+
         <EditText
-            android:id="@+id/et-pass"
+            android:id="@+id/password"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="username"
-            android:textColorHint="#2CA7E0"
             android:layout_gravity="center"
-            android:drawableLeft="@drawable/ic_person"
-            android:drawablePadding="10dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/edit"
+            android:background="@android:color/holo_blue_dark"
+            android:drawableLeft="@android:drawable/ic_lock_idle_lock"
+            android:drawablePadding="10dp"
+            android:hint="Enter your password..."
+            android:inputType="textPassword"
             android:padding="20dp"
-            />
+            android:textColorHint="#D9DEE1" />
+
         <TextView
+            android:id="@+id/forgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Forget Password?"
-            android:textColor="#2CA7E0"
-            android:fontFamily="sans-serif-medium"
             android:layout_gravity="right"
             android:layout_marginTop="20dp"
-            android:textSize="15dp"
             android:layout_marginRight="35dp"
-            />
+            android:fontFamily="sans-serif-medium"
+            android:text="Forget Password?"
+            android:textColor="#2CA7E0"
+            android:textSize="15dp" />
+
         <Button
-            android:id="@+id/loginbtn"
+            android:id="@+id/loginBtn"
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:text="Login"
-            android:textColor="#fff"
             android:layout_marginTop="20dp"
             android:background="@drawable/button"
-            />
+            android:text="Login"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/createText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="New Here ?  Create Account"
+            android:textColor="#2196F3"
+            tools:layout_gravity="center" />
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
 
     </LinearLayout>
 

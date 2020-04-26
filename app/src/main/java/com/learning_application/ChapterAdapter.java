@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.learning_application.dummy.DummyContent.DummyItem;
+//import com.learning_application.dummy.DummyContent.DummyItem;
 import com.learning_application.model.Chapter;
 
 import java.util.List;
