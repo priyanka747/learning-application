@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -189,22 +190,22 @@ public class Profile extends Fragment {
     }
 
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @androidx.annotation.Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == 1000) {
-//            if (resultCode == Activity.RESULT_OK) {
-//                Uri imageUri = data.getData();
-//
-//                //profileImage.setImageURI(imageUri);
-//
-//                uploadImageToFirebase(imageUri);
-//
-//
-//            }
-//        }
-//
-//    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @androidx.annotation.Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1000) {
+            if (resultCode == Activity.RESULT_OK) {
+                Uri imageUri = data.getData();
+
+                //profileImage.setImageURI(imageUri);
+
+                uploadImageToFirebase(imageUri);
+
+
+            }
+        }
+
+    }
 
     private void uploadImageToFirebase(Uri imageUri) {
         // uplaod image to firebase storage
