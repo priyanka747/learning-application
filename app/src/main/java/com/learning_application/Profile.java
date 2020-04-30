@@ -41,6 +41,8 @@ import javax.annotation.Nullable;
 
 public class Profile extends Fragment {
     private static final int GALLERY_INTENT_CODE = 1023;
+
+
     TextView fullName, email, phone, verifyMsg;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;

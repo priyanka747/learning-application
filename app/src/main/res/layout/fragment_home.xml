@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".HomeFragment">
 
     <!--<LinearLayout
@@ -32,20 +31,17 @@
 
     </LinearLayout>-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/mr"
-        android:text="this learning time for your career."
-        android:textColor="#5E5E5E"
-        android:textSize="18dp" />
-
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        app:cardBackgroundColor="#FFFFFF">
+        android:id="@+id/cardView"
+        android:layout_width="364dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,11 +76,13 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/lineaar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/mm"
@@ -96,6 +94,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/line"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
@@ -254,218 +253,148 @@
 
     </androidx.cardview.widget.CardView>
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/arima_madurai_bold"
+        android:text="Choose your standard :"
+        android:textColor="#5E5E5E"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/standarddrop"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/mm"
-            android:text="start your jouerney"
-            android:textColor="#5E5E5E"
-            android:textSize="18dp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="8dp"
-            android:background="#7a8b8b8b"></View>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Spinner
+        android:id="@+id/standarddrop"
+        android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/subject_cv"
-            android:layout_width="160dp"
-            android:layout_height="120dp"
-            android:layout_weight="1"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="2dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/ml"
-                    android:text="Subjects"
-                    android:textColor="#5E5E5E"
-                    android:textSize="18dp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="80dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:src="@android:drawable/sym_def_app_icon" />
-
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/arima_madurai_bold"
+        android:text="Choose the subject :"
+        android:textColor="#5E5E5E"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/standarddrop"
+        app:layout_constraintTop_toBottomOf="@+id/standarddrop" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="160dp"
-            android:layout_height="120dp"
-            android:layout_weight="1"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="2dp">
-
-            <RelativeLayout
-                android:layout_width="192dp"
-                android:layout_height="match_parent"
-                android:padding="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/ml"
-                    android:text="Quiz"
-                    android:textColor="#5E5E5E"
-                    android:textSize="18dp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="80dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:src="@android:drawable/sym_def_app_icon" />
-
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="160dp"
-            android:layout_height="120dp"
-            android:layout_marginLeft="18dp"
-            android:layout_weight="1"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="2dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/ml"
-                    android:text="Train"
-                    android:textColor="#5E5E5E"
-                    android:textSize="18dp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="80dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:src="@android:drawable/sym_def_app_icon" />
-
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Spinner
+        android:id="@+id/subjectdrop"
+        android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="160dp"
-            android:layout_height="120dp"
-            android:layout_weight="1"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="2dp">
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/arima_madurai_bold"
+        android:text="Choose the chapter :"
+        android:textColor="#5E5E5E"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subjectdrop" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="8dp">
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/arima_madurai_bold"
+        android:text="PDF Link :"
+        android:textColor="#5E5E5E"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chapterdrop" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/ml"
-                    android:text="Climbing"
-                    android:textColor="#5E5E5E"
-                    android:textSize="18dp" />
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/arima_madurai_bold"
+        android:text="You-Tube Link :"
+        android:textColor="#5E5E5E"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pdfLink" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="80dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:src="@android:drawable/sym_def_app_icon" />
+    <Spinner
+        android:id="@+id/chapterdrop"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-            </RelativeLayout>
+    <TextView
+        android:id="@+id/pdfLink"
+        android:layout_width="268dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:autoLink="web"
+        android:clickable="false"
+        android:hint="Enter PDF link here..."
+        android:inputType="text"
+        android:textColor="#2196F3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
-        </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/youtubeLink"
+        android:layout_width="268dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:autoLink="web"
+        android:clickable="false"
+        android:hint="Enter You-Tube link here..."
+        android:inputType="text"
+        android:textColor="#2196F3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="160dp"
-            android:layout_height="120dp"
-            android:layout_marginLeft="18dp"
-            android:layout_weight="1"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="2dp">
+    <Button
+        android:id="@+id/btnUpdatePdf"
+        android:layout_width="86dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="16dp"
+        android:baselineAligned="false"
+        android:text="Update"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.72"
+        app:layout_constraintStart_toEndOf="@+id/pdfLink"
+        app:layout_constraintTop_toBottomOf="@+id/chapterdrop" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="8dp">
+    <Button
+        android:id="@+id/btnUpdateYoutube"
+        android:layout_width="86dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="16dp"
+        android:baselineAligned="false"
+        android:text="Update"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.72"
+        app:layout_constraintStart_toEndOf="@+id/youtubeLink"
+        app:layout_constraintTop_toBottomOf="@+id/pdfLink" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/ml"
-                    android:text="Flight"
-                    android:textColor="#5E5E5E"
-                    android:textSize="18dp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="80dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:src="@android:drawable/sym_def_app_icon" />
-
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-
-
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
