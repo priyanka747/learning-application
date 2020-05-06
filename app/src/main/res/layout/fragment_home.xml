@@ -32,11 +32,34 @@
     </LinearLayout>-->
 
 
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--        android:layout_width="367dp"-->
+<!--        android:layout_height="35dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/cardView"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent">-->
+
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Monday" />-->
+
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Tuesday" />-->
+
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Wednesday" />-->
+<!--    </com.google.android.material.tabs.TabLayout>-->
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="364dp"
-        android:layout_height="115dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         app:cardBackgroundColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
@@ -44,24 +67,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="356dp"
             android:layout_height="wrap_content"
             android:background="#F65CC6C5"
             android:orientation="vertical"
             android:padding="16dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/mm"
-                    android:text="Good Morning"
-                    android:textColor="#ffffff"
-                    android:textSize="18dp" />
 
                 <!--                <RelativeLayout-->
                 <!--                    android:layout_width="match_parent"-->
@@ -73,40 +89,29 @@
                 <!--                </RelativeLayout>-->
 
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lineaar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
                 <TextView
-                    android:id="@+id/username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/mm"
-                    android:text="User Name"
-                    android:textColor="#ffff"
-                    android:textSize="24dp" />
+                    android:text="Good Morning,"
+                    android:textColor="#ffffff"
+                    android:textSize="14dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_conversion_absoluteHeight="25dp"
+                    tools:layout_conversion_absoluteWidth="131dp"
+                    tools:layout_editor_absoluteY="0dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/line"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical"></LinearLayout>
-            </LinearLayout>
+                android:fontFamily="@font/mm"
+                android:text="User Name"
+                android:textColor="#ffff"
+                android:textSize="18dp" />
 
             <!--                    <TextView-->
             <!--                        android:layout_width="wrap_content"-->
@@ -343,30 +348,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <TextView
+    <EditText
         android:id="@+id/pdfLink"
-        android:layout_width="268dp"
-        android:layout_height="25dp"
+        android:layout_width="266dp"
+        android:layout_height="36dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:autoLink="web"
-        android:clickable="false"
+
         android:hint="Enter PDF link here..."
-        android:inputType="text"
+        android:inputType="date|textUri|textShortMessage|textLongMessage|textAutoCorrect|numberSigned|textVisiblePassword|textWebEditText|textMultiLine|textNoSuggestions|textFilter|number|datetime|textWebEmailAddress|textPersonName|text|textPhonetic|textCapSentences|textPassword|textAutoComplete|textImeMultiLine|textPostalAddress|numberDecimal|textEmailAddress|numberPassword|textCapWords|phone|textEmailSubject|textCapCharacters|time|textWebPassword"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#2196F3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
-    <TextView
+    <EditText
         android:id="@+id/youtubeLink"
-        android:layout_width="268dp"
-        android:layout_height="25dp"
+        android:layout_width="266dp"
+        android:layout_height="36dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:autoLink="web"
-        android:clickable="false"
+
+
         android:hint="Enter You-Tube link here..."
-        android:inputType="text"
+        android:inputType="date|textUri|textShortMessage|textLongMessage|textAutoCorrect|numberSigned|textVisiblePassword|textWebEditText|textMultiLine|textNoSuggestions|textFilter|number|datetime|textWebEmailAddress|textPersonName|text|textPhonetic|textCapSentences|textPassword|textAutoComplete|textImeMultiLine|textPostalAddress|numberDecimal|textEmailAddress|numberPassword|textCapWords|phone|textEmailSubject|textCapCharacters|time|textWebPassword"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#2196F3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
