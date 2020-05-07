@@ -67,8 +67,8 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="356dp"
-            android:layout_height="wrap_content"
+            android:layout_width="322dp"
+            android:layout_height="match_parent"
             android:background="#F65CC6C5"
             android:orientation="vertical"
             android:padding="16dp">
@@ -272,8 +272,8 @@
 
     <Spinner
         android:id="@+id/standarddrop"
-        android:layout_width="379dp"
-        android:layout_height="wrap_content"
+        android:layout_width="317dp"
+        android:layout_height="25dp"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -293,8 +293,8 @@
 
     <Spinner
         android:id="@+id/subjectdrop"
-        android:layout_width="379dp"
-        android:layout_height="wrap_content"
+        android:layout_width="317dp"
+        android:layout_height="25dp"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -304,7 +304,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/arima_madurai_bold"
         android:text="Choose the chapter :"
@@ -341,17 +341,18 @@
 
     <Spinner
         android:id="@+id/chapterdrop"
-        android:layout_width="379dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_width="317dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.441"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
         android:id="@+id/pdfLink"
-        android:layout_width="266dp"
-        android:layout_height="36dp"
+        android:layout_width="226dp"
+        android:layout_height="37dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
 
@@ -364,8 +365,8 @@
 
     <EditText
         android:id="@+id/youtubeLink"
-        android:layout_width="266dp"
-        android:layout_height="36dp"
+        android:layout_width="226dp"
+        android:layout_height="37dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
 
@@ -380,7 +381,7 @@
     <Button
         android:id="@+id/btnUpdatePdf"
         android:layout_width="86dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
         android:layout_marginEnd="16dp"
         android:baselineAligned="false"
@@ -393,7 +394,7 @@
     <Button
         android:id="@+id/btnUpdateYoutube"
         android:layout_width="86dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="16dp"
         android:baselineAligned="false"

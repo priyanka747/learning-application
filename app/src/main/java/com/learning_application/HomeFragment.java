@@ -60,8 +60,10 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
             chapter_11th_Physics_arraylist,chapter_11th_Chemistry_arraylist,chapter_11th_Maths_arraylist,
             chapter_12th_Physics_arraylist,chapter_12th_Chemistry_arraylist,chapter_12th_Maths_arraylist;
     ArrayAdapter<String> standard_adapter,subject_adapter,chapter_adapter;
+    boolean result = false;
+    String var="";
 
-
+    int temp = 1;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -533,23 +535,53 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
 
                 ///-------------------Starting uploading links------------
 
+
+
+
                 DocumentReference documentReference = fStore.collection(standard).document(subject);
-
-                Map<String,Object> user = new HashMap<>();
-
-                documentReference.set(user)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                documentReference.get()
+                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                             @Override
-                            public void onSuccess(Void aVoid) {
-                                Log.d("qwerty", "Submitted Data "+ userId);
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                                if(documentSnapshot.exists()){
+                                    //temp = 1;
+                                    //var="exists";
+                                    Log.d("qwerty","exists");
+                                    // result = true;
+                                    DocumentReference documentReference = fStore.collection(standard).document(subject);
+                                    documentReference.update(chapter+" PDF Links", FieldValue.arrayUnion(pdfLink.getText().toString()));
+
+                                }
+                                else{
+                                    //temp=0;
+                                    // var="notexists";
+                                    Log.d("qwerty"," not exists");
+                                    //result = false;
+                                    DocumentReference documentReference = fStore.collection(standard).document(subject);
+                                    Map<String,Object> user = new HashMap<>();
+                                    documentReference.set(user)
+                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    Log.d("qwerty", "Submitted Data "+ userId);
+                                                }
+                                            }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.d("qwerty", "onFailure: " + e.toString());
+                                        }
+                                    });
+                                    documentReference.update(chapter+" PDF Links", FieldValue.arrayUnion(pdfLink.getText().toString()));
+                                }
                             }
-                        }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d("qwerty", "onFailure: " + e.toString());
-                    }
-                });
-                documentReference.update(chapter+" PDF Links", FieldValue.arrayUnion(pdfLink.getText().toString()));
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+
+                            }
+                        });
 
                 ///-------------------Ends uploading links------------
 
@@ -573,26 +605,54 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
                 ///-------------------Starting uploading links------------
 
                 DocumentReference documentReference = fStore.collection(standard).document(subject);
-                Map<String,Object> user = new HashMap<>();
-                documentReference.set(user)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                documentReference.get()
+                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                             @Override
-                            public void onSuccess(Void aVoid) {
-                                Log.d("qwerty", "Submitted Data "+ userId);
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d("qwerty", "onFailure: " + e.toString());
-                    }
-                });
-                documentReference.update(chapter+" Youtube Links", FieldValue.arrayUnion(youtubeLink.getText().toString()));
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
 
+                                if(documentSnapshot.exists()){
+                                    //temp = 1;
+                                    //var="exists";
+                                    Log.d("qwerty","exists");
+                                    // result = true;
+                                    DocumentReference documentReference = fStore.collection(standard).document(subject);
+                                    documentReference.update(chapter+" You-Tube Links", FieldValue.arrayUnion(youtubeLink.getText().toString()));
+
+                                }
+                                else{
+                                    //temp=0;
+                                    // var="notexists";
+                                    Log.d("qwerty"," not exists");
+                                    //result = false;
+                                    DocumentReference documentReference = fStore.collection(standard).document(subject);
+                                    Map<String,Object> user = new HashMap<>();
+                                    documentReference.set(user)
+                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    Log.d("qwerty", "Submitted Data "+ userId);
+                                                }
+                                            }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.d("qwerty", "onFailure: " + e.toString());
+                                        }
+                                    });
+                                    documentReference.update(chapter+" You-Tube Links", FieldValue.arrayUnion(youtubeLink.getText().toString()));
+                                }
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+
+                            }
+                        });
                 ///-------------------Ends uploading links------------
 
 
 
-            }//onclick method for pdf button ends here
+            }//onclick method for Youtube button ends here
         });
 
 
@@ -609,6 +669,7 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
 
 
 
